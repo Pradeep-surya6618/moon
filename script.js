@@ -565,6 +565,26 @@ function toggleNoteAudio(btn, audio, otherBtn, otherAudio, name) {
 toggleNoteAudio(himNoteBtn, himNoteAudio, herNoteBtn, herNoteAudio, "Surya's Note");
 toggleNoteAudio(herNoteBtn, herNoteAudio, himNoteBtn, himNoteAudio, "Poorni's Note");
 
+// Footer Floating Hearts
+(function () {
+  const container = document.getElementById("footer-hearts");
+  if (!container) return;
+  const emojis = ["💗", "💕", "💖", "💓", "💞", "🩷", "♥️", "💘", "💝"];
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement("span");
+    el.className = "footer-float-heart";
+    el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+    el.style.left = Math.random() * 100 + "%";
+    el.style.fontSize = (0.8 + Math.random() * 1.4) + "rem";
+    el.style.setProperty("--s", (0.6 + Math.random() * 0.8).toString());
+    el.style.setProperty("--o", (0.15 + Math.random() * 0.25).toString());
+    el.style.setProperty("--r", (Math.random() * 360 - 180) + "deg");
+    el.style.animationDuration = (8 + Math.random() * 10) + "s";
+    el.style.animationDelay = (Math.random() * 12) + "s";
+    container.appendChild(el);
+  }
+})();
+
 // Smooth Scroll for Button
 document.querySelector(".heart-btn").addEventListener("click", () => {
   document.getElementById("chapter-1").scrollIntoView({ behavior: "smooth" });
