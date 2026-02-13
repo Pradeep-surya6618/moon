@@ -715,7 +715,7 @@ body {
   }
 
   .mini-frame:nth-child(1) {
-    top: 2% !important;
+    top: 6% !important;
     left: 2% !important;
   }
   .mini-frame:nth-child(2) {
