@@ -105,11 +105,22 @@ document
 
 // Secret Message Reveal
 const secretBox = document.getElementById("secret-message");
+const remoBgm = document.getElementById("remo-bgm");
 if (secretBox) {
   secretBox.addEventListener("click", () => {
     if (!secretBox.classList.contains("active")) {
       secretBox.classList.add("active");
       createHeartBurst(secretBox);
+
+      // Stop all other audio before playing remo-bgm
+      stopAllAudio();
+
+      // Play remo-bgm
+      if (remoBgm) {
+        remoBgm.volume = 0.5;
+        remoBgm.play();
+      }
+
       // Fire confetti cannons from both bottom corners
       fireConfettiCannon("left");
       fireConfettiCannon("right");
@@ -268,6 +279,14 @@ function stopSorryMusic() {
   }
 }
 
+// Helper: stop remo bgm
+function stopRemoBgm() {
+  if (remoBgm && !remoBgm.paused) {
+    remoBgm.pause();
+    remoBgm.currentTime = 0;
+  }
+}
+
 // Helper: stop a note audio and reset its button
 function stopNoteAudio(btn, audio, name) {
   if (audio && !audio.paused) {
@@ -279,14 +298,23 @@ function stopNoteAudio(btn, audio, name) {
   }
 }
 
+// Helper: stop all audio
+function stopAllAudio() {
+  stopSorryMusic();
+  stopRemoBgm();
+  stopNoteAudio(himNoteBtn, himNoteAudio, "Surya's Note");
+  stopNoteAudio(herNoteBtn, herNoteAudio, "Poorni's Note");
+}
+
 // Sad Music Toggle for Sorry Section
 if (sadMusicBtn && sadMusic) {
   sadMusic.volume = 0.4;
 
   sadMusicBtn.addEventListener("click", () => {
-    // Stop note songs if playing
+    // Stop all other audio
     stopNoteAudio(himNoteBtn, himNoteAudio, "Surya's Note");
     stopNoteAudio(herNoteBtn, herNoteAudio, "Poorni's Note");
+    stopRemoBgm();
 
     if (sadMusic.paused) {
       sadMusic.play();
@@ -310,8 +338,9 @@ function toggleNoteAudio(btn, audio, otherBtn, otherAudio, name) {
   if (!btn || !audio) return;
 
   btn.addEventListener("click", () => {
-    // Stop sorry bgm if playing
+    // Stop sorry bgm and remo bgm if playing
     stopSorryMusic();
+    stopRemoBgm();
 
     // Pause the other note audio if playing
     const otherName = otherBtn === himNoteBtn ? "Surya's Note" : "Poorni's Note";
