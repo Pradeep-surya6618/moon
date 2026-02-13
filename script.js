@@ -167,6 +167,47 @@ window.addEventListener("resize", init);
 init();
 animate();
 
+// Hero Section Floating Hearts & Papers
+(function () {
+  const heroDeco = document.getElementById("hero-deco");
+  if (!heroDeco) return;
+
+  const hearts = ["💗", "💕", "💖", "💓", "🩷", "♥️", "💞"];
+  const paperColors = ["#f06292", "#e91e63", "#f8bbd0", "#ff80ab", "#fce4ec", "#ec407a"];
+
+  for (let i = 0; i < 20; i++) {
+    const el = document.createElement("span");
+    el.className = "hero-heart";
+    el.textContent = hearts[Math.floor(Math.random() * hearts.length)];
+    el.style.left = Math.random() * 100 + "%";
+    el.style.top = Math.random() * 100 + "%";
+    el.style.fontSize = (1 + Math.random() * 2) + "rem";
+    el.style.setProperty("--opacity", (0.08 + Math.random() * 0.1).toString());
+    el.style.setProperty("--drift-y", (-30 - Math.random() * 40) + "px");
+    el.style.setProperty("--drift-r", (Math.random() * 60 - 30) + "deg");
+    el.style.animationDuration = (8 + Math.random() * 10) + "s";
+    el.style.animationDelay = (Math.random() * 12) + "s";
+    heroDeco.appendChild(el);
+  }
+
+  for (let i = 0; i < 15; i++) {
+    const el = document.createElement("div");
+    el.className = "hero-paper";
+    el.style.left = Math.random() * 100 + "%";
+    el.style.top = Math.random() * 100 + "%";
+    el.style.background = paperColors[Math.floor(Math.random() * paperColors.length)];
+    el.style.width = (10 + Math.random() * 16) + "px";
+    el.style.height = (8 + Math.random() * 12) + "px";
+    el.style.setProperty("--r", (Math.random() * 360) + "deg");
+    el.style.setProperty("--opacity", (0.06 + Math.random() * 0.08).toString());
+    el.style.setProperty("--drift-y", (-20 - Math.random() * 50) + "px");
+    el.style.setProperty("--drift-r", (Math.random() * 90 - 45) + "deg");
+    el.style.animationDuration = (10 + Math.random() * 12) + "s";
+    el.style.animationDelay = (Math.random() * 15) + "s";
+    heroDeco.appendChild(el);
+  }
+})();
+
 // Intersection Observer for Scroll Animations
 const observerOptions = {
   threshold: 0.1,
