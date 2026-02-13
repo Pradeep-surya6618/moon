@@ -231,6 +231,23 @@ function fireConfettiCannon(side) {
   }
 }
 
+// "Nee Endhu di Poorni" Button — confetti on click
+const foreverBtn = document.getElementById("forever-btn");
+if (foreverBtn) {
+  foreverBtn.addEventListener("click", () => {
+    fireConfettiCannon("left");
+    fireConfettiCannon("right");
+    setTimeout(() => {
+      fireConfettiCannon("left");
+      fireConfettiCannon("right");
+    }, 600);
+    setTimeout(() => {
+      fireConfettiCannon("left");
+      fireConfettiCannon("right");
+    }, 1200);
+  });
+}
+
 // Sad Music Toggle for Sorry Section
 const sadMusicBtn = document.getElementById("play-sad-music");
 const sadMusic = document.getElementById("sad-music");
