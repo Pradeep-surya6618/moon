@@ -703,10 +703,10 @@ body {
 
   /* Make hero photos visible and smaller on mobile */
   .mini-frame {
-    width: 60px;
-    height: 75px;
-    padding: 4px;
-    padding-bottom: 12px;
+    width: 90px;
+    height: 110px;
+    padding: 6px;
+    padding-bottom: 18px;
   }
 
   .mini-frame:nth-child(1) {
