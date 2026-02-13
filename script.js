@@ -1,3 +1,86 @@
+// ===== Intro Overlay — Gift Wrapper =====
+(function () {
+  const overlay = document.getElementById("intro-overlay");
+  const heartsBg = document.getElementById("intro-hearts-bg");
+  const nepBgm = document.getElementById("nep-bgm");
+
+  if (!overlay) return;
+
+  // Create floating hearts background
+  const heartEmojis = ["💗", "💕", "💖", "💓", "💞", "🩷", "♥️"];
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement("span");
+    heart.className = "intro-floating-heart";
+    heart.textContent = heartEmojis[Math.floor(Math.random() * heartEmojis.length)];
+    heart.style.left = Math.random() * 100 + "%";
+    heart.style.fontSize = (Math.random() * 1.5 + 0.8) + "rem";
+    heart.style.animationDuration = (Math.random() * 6 + 5) + "s";
+    heart.style.animationDelay = (Math.random() * 8) + "s";
+    heartsBg.appendChild(heart);
+  }
+
+  // Fire intro confetti hearts from center
+  function fireIntroConfetti() {
+    const emojis = ["❤️", "💖", "💗", "💕", "💘", "💝", "💓", "💞", "🩷", "✨", "🌸"];
+    const count = 60;
+    const cx = window.innerWidth / 2;
+    const cy = window.innerHeight / 2;
+
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement("span");
+      el.className = "intro-confetti-heart";
+      el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const angle = (Math.random() * Math.PI * 2);
+      const velocity = 200 + Math.random() * 500;
+      const tx = Math.cos(angle) * velocity;
+      const ty = Math.sin(angle) * velocity - 100;
+
+      el.style.left = cx + "px";
+      el.style.top = cy + "px";
+      el.style.setProperty("--tx", tx + "px");
+      el.style.setProperty("--ty", ty + "px");
+      el.style.setProperty("--tr", (Math.random() * 720 - 360) + "deg");
+      el.style.setProperty("--confetti-size", (0.6 + Math.random() * 1.2).toString());
+      el.style.setProperty("--fall-duration", (1.5 + Math.random() * 1.5) + "s");
+      el.style.setProperty("--fall-delay", (Math.random() * 0.4) + "s");
+      el.style.fontSize = (1 + Math.random() * 1.5) + "rem";
+
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 3500);
+    }
+  }
+
+  // Handle tap to open
+  overlay.addEventListener("click", function () {
+    if (overlay.classList.contains("opening")) return;
+    overlay.classList.add("opening");
+
+    // Play NEP-bgm at mild volume
+    if (nepBgm) {
+      nepBgm.volume = 0.15;
+      nepBgm.play().catch(() => {});
+    }
+
+    // Fire confetti from center
+    fireIntroConfetti();
+
+    // Second wave
+    setTimeout(() => fireIntroConfetti(), 400);
+
+    // After gift explodes, fade out overlay and unlock scroll
+    setTimeout(() => {
+      overlay.classList.add("hidden");
+      document.body.classList.remove("scroll-locked");
+    }, 1000);
+
+    // Remove overlay from DOM after transition
+    setTimeout(() => {
+      overlay.remove();
+    }, 2000);
+  });
+})();
+
 // Particle System: Floating Petals
 const canvas = document.getElementById("petal-canvas");
 const ctx = canvas.getContext("2d");
@@ -114,6 +197,7 @@ if (secretBox) {
 
       // Stop all other audio before playing remo-bgm
       stopAllAudio();
+      pauseNepBgm();
 
       // Play remo-bgm and show pause button
       const remoPauseBtn = document.getElementById("remo-pause-btn");
@@ -151,6 +235,7 @@ if (remoPauseBtn && remoBgm) {
     e.stopPropagation();
     if (remoBgm.paused) {
       stopAllAudio();
+      pauseNepBgm();
       remoBgm.play();
       remoPauseBtn.textContent = "🎶";
       remoPauseBtn.classList.remove("paused");
@@ -158,6 +243,7 @@ if (remoPauseBtn && remoBgm) {
       remoBgm.pause();
       remoPauseBtn.textContent = "🎵";
       remoPauseBtn.classList.add("paused");
+      if (!isAnySectionAudioPlaying()) resumeNepBgm();
     }
   });
 }
@@ -290,6 +376,30 @@ const himNoteBtn = document.getElementById("play-him-note");
 const herNoteBtn = document.getElementById("play-her-note");
 const himNoteAudio = document.getElementById("him-note-audio");
 const herNoteAudio = document.getElementById("her-note-audio");
+const nepBgm = document.getElementById("nep-bgm");
+
+// Helper: pause NEP background music
+function pauseNepBgm() {
+  if (nepBgm && !nepBgm.paused) {
+    nepBgm.pause();
+  }
+}
+
+// Helper: resume NEP background music
+function resumeNepBgm() {
+  if (nepBgm && nepBgm.paused) {
+    nepBgm.volume = 0.15;
+    nepBgm.play().catch(() => {});
+  }
+}
+
+// Check if any section audio is playing
+function isAnySectionAudioPlaying() {
+  return (sadMusic && !sadMusic.paused) ||
+    (remoBgm && !remoBgm.paused) ||
+    (himNoteAudio && !himNoteAudio.paused) ||
+    (herNoteAudio && !herNoteAudio.paused);
+}
 
 // Helper: stop sorry bgm and reset its button
 function stopSorryMusic() {
@@ -327,7 +437,7 @@ function stopNoteAudio(btn, audio, name) {
   }
 }
 
-// Helper: stop all audio
+// Helper: stop all audio (except NEP bgm)
 function stopAllAudio() {
   stopSorryMusic();
   stopRemoBgm();
@@ -346,6 +456,7 @@ if (sadMusicBtn && sadMusic) {
     stopRemoBgm();
 
     if (sadMusic.paused) {
+      pauseNepBgm();
       sadMusic.play();
       sadMusicBtn.classList.add("playing");
       sadMusicBtn.querySelector(".heart-icon").textContent = "🎶";
@@ -358,7 +469,17 @@ if (sadMusicBtn && sadMusic) {
       sadMusicBtn.querySelector(".heart-icon").textContent = "🎵";
       sadMusicBtn.childNodes[sadMusicBtn.childNodes.length - 1].textContent =
         " Feel My Words";
+      resumeNepBgm();
     }
+  });
+
+  // Resume NEP bgm when sorry music ends
+  sadMusic.addEventListener("ended", () => {
+    sadMusicBtn.classList.remove("playing");
+    sadMusicBtn.querySelector(".heart-icon").textContent = "🎵";
+    sadMusicBtn.childNodes[sadMusicBtn.childNodes.length - 1].textContent =
+      " Feel My Words";
+    if (!isAnySectionAudioPlaying()) resumeNepBgm();
   });
 }
 
@@ -376,6 +497,7 @@ function toggleNoteAudio(btn, audio, otherBtn, otherAudio, name) {
     stopNoteAudio(otherBtn, otherAudio, otherName);
 
     if (audio.paused) {
+      pauseNepBgm();
       audio.play();
       btn.classList.add("playing");
       btn.querySelector(".heart-icon").textContent = "🎶";
@@ -386,14 +508,16 @@ function toggleNoteAudio(btn, audio, otherBtn, otherAudio, name) {
       btn.classList.remove("playing");
       btn.querySelector(".heart-icon").textContent = "🎵";
       btn.childNodes[btn.childNodes.length - 1].textContent = " " + name;
+      if (!isAnySectionAudioPlaying()) resumeNepBgm();
     }
   });
 
-  // Reset button when audio ends
+  // Reset button when audio ends — resume NEP bgm
   audio.addEventListener("ended", () => {
     btn.classList.remove("playing");
     btn.querySelector(".heart-icon").textContent = "🎵";
     btn.childNodes[btn.childNodes.length - 1].textContent = " " + name;
+    if (!isAnySectionAudioPlaying()) resumeNepBgm();
   });
 }
 

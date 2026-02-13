@@ -36,7 +36,30 @@
     />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
+  <body class="scroll-locked">
+    <!-- Intro Overlay — Gift Wrapper -->
+    <div class="intro-overlay" id="intro-overlay">
+      <div class="intro-hearts-bg" id="intro-hearts-bg"></div>
+      <div class="intro-gift-box" id="intro-gift-box">
+        <div class="gift-ribbon-horizontal"></div>
+        <div class="gift-ribbon-vertical"></div>
+        <div class="gift-bow">
+          <div class="bow-left"></div>
+          <div class="bow-right"></div>
+          <div class="bow-knot"></div>
+        </div>
+        <div class="gift-label">
+          <span class="gift-sp">S ❤ P</span>
+          <span class="gift-tap">Tap to Open</span>
+        </div>
+      </div>
+      <div class="intro-shimmer"></div>
+    </div>
+
+    <audio id="nep-bgm" loop preload="auto">
+      <source src="public/music/NEP-bgm.mpeg" type="audio/mpeg" />
+    </audio>
+
     <canvas id="petal-canvas"></canvas>
 
     <main class="scroll-container">
@@ -758,7 +781,7 @@
           </button>
         </div>
         <audio id="remo-bgm" loop preload="auto">
-          <source src="public/music/remo-bgm.mp3" type="audio/mpeg" />
+          <source src="public/music/vtv-bgm.mp3" type="audio/mpeg" />
         </audio>
       </section>
     </main>
