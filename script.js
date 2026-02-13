@@ -115,10 +115,16 @@ if (secretBox) {
       // Stop all other audio before playing remo-bgm
       stopAllAudio();
 
-      // Play remo-bgm
+      // Play remo-bgm and show pause button
+      const remoPauseBtn = document.getElementById("remo-pause-btn");
       if (remoBgm) {
         remoBgm.volume = 0.5;
         remoBgm.play();
+      }
+      if (remoPauseBtn) {
+        remoPauseBtn.style.display = "flex";
+        remoPauseBtn.textContent = "🎶";
+        remoPauseBtn.classList.remove("paused");
       }
 
       // Fire confetti cannons from both bottom corners
@@ -134,6 +140,24 @@ if (secretBox) {
         fireConfettiCannon("left");
         fireConfettiCannon("right");
       }, 1400);
+    }
+  });
+}
+
+// Remo BGM Pause/Play Toggle Button
+const remoPauseBtn = document.getElementById("remo-pause-btn");
+if (remoPauseBtn && remoBgm) {
+  remoPauseBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    if (remoBgm.paused) {
+      stopAllAudio();
+      remoBgm.play();
+      remoPauseBtn.textContent = "🎶";
+      remoPauseBtn.classList.remove("paused");
+    } else {
+      remoBgm.pause();
+      remoPauseBtn.textContent = "🎵";
+      remoPauseBtn.classList.add("paused");
     }
   });
 }
@@ -284,6 +308,11 @@ function stopRemoBgm() {
   if (remoBgm && !remoBgm.paused) {
     remoBgm.pause();
     remoBgm.currentTime = 0;
+    const pauseBtn = document.getElementById("remo-pause-btn");
+    if (pauseBtn) {
+      pauseBtn.textContent = "🎵";
+      pauseBtn.classList.add("paused");
+    }
   }
 }
 
