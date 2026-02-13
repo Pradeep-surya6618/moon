@@ -539,6 +539,7 @@ function toggleNoteAudio(btn, audio, otherBtn, otherAudio, name) {
 
     if (audio.paused) {
       pauseNepBgm();
+      audio.volume = 0.3;
       audio.play();
       btn.classList.add("playing");
       btn.querySelector(".heart-icon").textContent = "🎶";
