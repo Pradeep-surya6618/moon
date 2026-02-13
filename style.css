@@ -1025,6 +1025,21 @@ body.scroll-locked {
   animation: pulse 2s infinite ease-in-out;
 }
 
+@media (max-width: 768px) {
+  .note-buttons {
+    gap: 0.8rem;
+    margin-top: 1.2rem;
+    flex-wrap: nowrap;
+  }
+
+  .note-btn {
+    font-size: 0.75rem;
+    padding: 0.6rem 1rem;
+    min-width: 0;
+    flex: 1;
+  }
+}
+
 /* Reveal section override — expand with content */
 .reveal-section {
   height: auto;
