@@ -248,14 +248,46 @@ if (foreverBtn) {
   });
 }
 
-// Sad Music Toggle for Sorry Section
+// Audio Elements
 const sadMusicBtn = document.getElementById("play-sad-music");
 const sadMusic = document.getElementById("sad-music");
+const himNoteBtn = document.getElementById("play-him-note");
+const herNoteBtn = document.getElementById("play-her-note");
+const himNoteAudio = document.getElementById("him-note-audio");
+const herNoteAudio = document.getElementById("her-note-audio");
 
+// Helper: stop sorry bgm and reset its button
+function stopSorryMusic() {
+  if (sadMusic && !sadMusic.paused) {
+    sadMusic.pause();
+    sadMusic.currentTime = 0;
+    sadMusicBtn.classList.remove("playing");
+    sadMusicBtn.querySelector(".heart-icon").textContent = "🎵";
+    sadMusicBtn.childNodes[sadMusicBtn.childNodes.length - 1].textContent =
+      " Feel My Words";
+  }
+}
+
+// Helper: stop a note audio and reset its button
+function stopNoteAudio(btn, audio, name) {
+  if (audio && !audio.paused) {
+    audio.pause();
+    audio.currentTime = 0;
+    btn.classList.remove("playing");
+    btn.querySelector(".heart-icon").textContent = "🎵";
+    btn.childNodes[btn.childNodes.length - 1].textContent = " " + name;
+  }
+}
+
+// Sad Music Toggle for Sorry Section
 if (sadMusicBtn && sadMusic) {
   sadMusic.volume = 0.4;
 
   sadMusicBtn.addEventListener("click", () => {
+    // Stop note songs if playing
+    stopNoteAudio(himNoteBtn, himNoteAudio, "Surya's Note");
+    stopNoteAudio(herNoteBtn, herNoteAudio, "Poorni's Note");
+
     if (sadMusic.paused) {
       sadMusic.play();
       sadMusicBtn.classList.add("playing");
@@ -264,6 +296,7 @@ if (sadMusicBtn && sadMusic) {
         " Listening...";
     } else {
       sadMusic.pause();
+      sadMusic.currentTime = 0;
       sadMusicBtn.classList.remove("playing");
       sadMusicBtn.querySelector(".heart-icon").textContent = "🎵";
       sadMusicBtn.childNodes[sadMusicBtn.childNodes.length - 1].textContent =
@@ -273,24 +306,16 @@ if (sadMusicBtn && sadMusic) {
 }
 
 // Note Song Buttons
-const himNoteBtn = document.getElementById("play-him-note");
-const herNoteBtn = document.getElementById("play-her-note");
-const himNoteAudio = document.getElementById("him-note-audio");
-const herNoteAudio = document.getElementById("her-note-audio");
-
 function toggleNoteAudio(btn, audio, otherBtn, otherAudio, name) {
   if (!btn || !audio) return;
 
   btn.addEventListener("click", () => {
-    // Pause the other audio if playing
-    if (otherAudio && !otherAudio.paused) {
-      otherAudio.pause();
-      otherAudio.currentTime = 0;
-      otherBtn.classList.remove("playing");
-      otherBtn.querySelector(".heart-icon").textContent = "🎵";
-      otherBtn.childNodes[otherBtn.childNodes.length - 1].textContent =
-        " " + (otherBtn === himNoteBtn ? "Surya's Note" : "Poorni's Note");
-    }
+    // Stop sorry bgm if playing
+    stopSorryMusic();
+
+    // Pause the other note audio if playing
+    const otherName = otherBtn === himNoteBtn ? "Surya's Note" : "Poorni's Note";
+    stopNoteAudio(otherBtn, otherAudio, otherName);
 
     if (audio.paused) {
       audio.play();
