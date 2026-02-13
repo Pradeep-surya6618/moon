@@ -272,6 +272,51 @@ if (sadMusicBtn && sadMusic) {
   });
 }
 
+// Note Song Buttons
+const himNoteBtn = document.getElementById("play-him-note");
+const herNoteBtn = document.getElementById("play-her-note");
+const himNoteAudio = document.getElementById("him-note-audio");
+const herNoteAudio = document.getElementById("her-note-audio");
+
+function toggleNoteAudio(btn, audio, otherBtn, otherAudio, name) {
+  if (!btn || !audio) return;
+
+  btn.addEventListener("click", () => {
+    // Pause the other audio if playing
+    if (otherAudio && !otherAudio.paused) {
+      otherAudio.pause();
+      otherAudio.currentTime = 0;
+      otherBtn.classList.remove("playing");
+      otherBtn.querySelector(".heart-icon").textContent = "🎵";
+      otherBtn.childNodes[otherBtn.childNodes.length - 1].textContent =
+        " " + (otherBtn === himNoteBtn ? "Surya's Note" : "Poorni's Note");
+    }
+
+    if (audio.paused) {
+      audio.play();
+      btn.classList.add("playing");
+      btn.querySelector(".heart-icon").textContent = "🎶";
+      btn.childNodes[btn.childNodes.length - 1].textContent = " Playing...";
+    } else {
+      audio.pause();
+      audio.currentTime = 0;
+      btn.classList.remove("playing");
+      btn.querySelector(".heart-icon").textContent = "🎵";
+      btn.childNodes[btn.childNodes.length - 1].textContent = " " + name;
+    }
+  });
+
+  // Reset button when audio ends
+  audio.addEventListener("ended", () => {
+    btn.classList.remove("playing");
+    btn.querySelector(".heart-icon").textContent = "🎵";
+    btn.childNodes[btn.childNodes.length - 1].textContent = " " + name;
+  });
+}
+
+toggleNoteAudio(himNoteBtn, himNoteAudio, herNoteBtn, herNoteAudio, "Surya's Note");
+toggleNoteAudio(herNoteBtn, herNoteAudio, himNoteBtn, himNoteAudio, "Poorni's Note");
+
 // Smooth Scroll for Button
 document.querySelector(".heart-btn").addEventListener("click", () => {
   document.getElementById("chapter-1").scrollIntoView({ behavior: "smooth" });
