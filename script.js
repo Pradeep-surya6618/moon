@@ -22,7 +22,7 @@
   // Fire intro confetti hearts from center
   function fireIntroConfetti() {
     const emojis = ["❤️", "💖", "💗", "💕", "💘", "💝", "💓", "💞", "🩷", "✨", "🌸"];
-    const count = 60;
+    const count = 35;
     const cx = window.innerWidth / 2;
     const cy = window.innerHeight / 2;
 
@@ -62,22 +62,22 @@
       nepBgm.play().catch(() => {});
     }
 
-    // Fire confetti from center
-    fireIntroConfetti();
+    // Fire confetti from center (staggered for smoothness)
+    requestAnimationFrame(() => fireIntroConfetti());
 
     // Second wave
-    setTimeout(() => fireIntroConfetti(), 400);
+    setTimeout(() => fireIntroConfetti(), 500);
 
     // After gift explodes, fade out overlay and unlock scroll
     setTimeout(() => {
       overlay.classList.add("hidden");
       document.body.classList.remove("scroll-locked");
-    }, 1000);
+    }, 700);
 
     // Remove overlay from DOM after transition
     setTimeout(() => {
       overlay.remove();
-    }, 2000);
+    }, 1400);
   });
 })();
 
