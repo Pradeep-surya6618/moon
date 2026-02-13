@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Poorni & Surya | Our Love Story</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <canvas id="petal-canvas"></canvas>
+
+    <main class="scroll-container">
+      <!-- Hero Section -->
+      <section class="hero-section full-screen">
+        <div class="hero-photos">
+          <!-- Mini Photo Frames -->
+          <div
+            class="mini-frame"
+            style="top: 10%; left: 10%; --rotation: -15deg; --delay: 0s"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1516589174184-c684ee39021c?q=80&w=200&auto=format&fit=crop"
+              alt="Memory 1"
+            />
+          </div>
+          <div
+            class="mini-frame"
+            style="top: 20%; right: 15%; --rotation: 10deg; --delay: 1s"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1522673607200-164883eecd0c?q=80&w=200&auto=format&fit=crop"
+              alt="Memory 2"
+            />
+          </div>
+          <div
+            class="mini-frame"
+            style="bottom: 15%; left: 20%; --rotation: 5deg; --delay: 2s"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=200&auto=format&fit=crop"
+              alt="Memory 3"
+            />
+          </div>
+          <div
+            class="mini-frame"
+            style="bottom: 25%; right: 10%; --rotation: -10deg; --delay: 0.5s"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=200&auto=format&fit=crop"
+              alt="Memory 4"
+            />
+          </div>
+        </div>
+        <div class="glass-card fade-in">
+          <h1 class="elegant-title">To My Dearest Poorni</h1>
+          <p class="subtitle">Every second with you is a beautiful story.</p>
+          <span class="names-highlight">Poorni & Surya</span>
+          <button class="heart-btn pulse">
+            <span class="heart-icon">❤</span>
+            Scroll Down
+          </button>
+        </div>
+      </section>
+
+      <!-- Story Chapters -->
+      <section class="story-section" id="chapter-1">
+        <div class="chapter-content slide-left">
+          <div class="glass-photo-card">
+            <img
+              src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=1000&auto=format&fit=crop"
+              alt="The Beginning"
+            />
+            <div class="photo-caption">Where it all began...</div>
+          </div>
+          <div class="chapter-text">
+            <h2 class="serif-text">The First Meet</h2>
+            <p>
+              It was a day just like any other, until I saw your smile. Time
+              stood still, and the world faded away.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="story-section alternate" id="chapter-2">
+        <div class="chapter-content slide-right">
+          <div class="chapter-text">
+            <h2 class="serif-text">Endless Adventures</h2>
+            <p>
+              From late-night talks to exploring new horizons, every moment with
+              you has been an adventure of a lifetime.
+            </p>
+          </div>
+          <div class="glass-photo-card">
+            <img
+              src="https://images.unsplash.com/photo-1494774157365-9e04c6720e47?q=80&w=1000&auto=format&fit=crop"
+              alt="Adventures"
+            />
+            <div class="photo-caption">Captured moments</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Memory: Bus Journey & Holding Hands -->
+      <section class="story-section" id="bus-journey">
+        <div class="chapter-content slide-left">
+          <div class="glass-photo-card">
+            <img
+              src="https://images.unsplash.com/photo-1516589174184-c684ee39021c?q=80&w=1000&auto=format&fit=crop"
+              alt="Holding Hands"
+            />
+            <div class="photo-caption">Intertwined in the bus</div>
+          </div>
+          <div class="chapter-text">
+            <h2 class="serif-text">Holding Hands</h2>
+            <p>
+              Every time I saw you on that bus, my first instinct was to reach
+              for your hand. Holding your hand in the middle of our journeys
+              felt like holding the entire world. It’s my favorite way to
+              travel—with my hand in yours.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Memory: First Saree Look -->
+      <section class="story-section alternate" id="first-saree">
+        <div class="chapter-content slide-right">
+          <div class="chapter-text">
+            <h2 class="serif-text">Jan 6th, 2026</h2>
+            <h3
+              class="serif-text"
+              style="color: var(--deep-pink); margin-bottom: 1rem"
+            >
+              A Vision in Grace
+            </h3>
+            <p>
+              I remember the moment my breath caught in my throat. Seeing you in
+              a saree for the first time wasn't just about the elegance of the
+              fabric; it was about the way you carried yourself with such
+              effortless grace. In that moment, you weren't just the girl I
+              loved; you were a masterpiece, a poetic blend of tradition and
+              beauty that I'll cherish forever.
+            </p>
+          </div>
+          <div class="glass-photo-card">
+            <img
+              src="https://images.unsplash.com/photo-1610030482711-c917cbb31b64?q=80&w=1000&auto=format&fit=crop"
+              alt="First Saree Look"
+            />
+            <div class="photo-caption">The first time in a saree</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Memory: College Visit -->
+      <section class="story-section" id="college-visit">
+        <div class="chapter-content slide-left">
+          <div class="glass-photo-card">
+            <img
+              src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1000&auto=format&fit=crop"
+              alt="College Gate"
+            />
+            <div class="photo-caption">The best part of my day</div>
+          </div>
+          <div class="chapter-text">
+            <h2 class="serif-text">Waiting at the Gates</h2>
+            <p>
+              Standing outside your college, waiting for that one glimpse of you
+              coming through the gates. It’s the highlight of my day, every
+              single time. Seeing you makes every wait worth it.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <h2
+          class="serif-text"
+          style="
+            text-align: center;
+            font-size: 3rem;
+            color: var(--deep-pink);
+            margin-bottom: 2rem;
+          "
+        >
+          Our Beautiful Memories
+        </h2>
+        <div class="gallery-grid">
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 1"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1516589174184-c684ee39021c?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 2"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1518199266791-5375a83190b7?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 3"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1522673607200-164883eecd0c?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 4"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1494972308805-463bc619d34e?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 5"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1511108690759-00914434f2b9?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 6"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1512411411139-4481d6d1b822?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 7"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1493666438817-866a91353ca9?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 8"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1520182205163-04f4c9470ad1?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 9"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1501901642055-33925763920e?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 10"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1474552226712-ac0f0961a954?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 11"
+            />
+          </div>
+          <div class="gallery-item fade-in">
+            <img
+              src="https://images.unsplash.com/photo-1454496522488-7a8e5376a1ee?q=80&w=600&auto=format&fit=crop"
+              alt="Memory 12"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Sorry Section -->
+      <section class="sorry-section full-screen" id="sorry">
+        <div class="sorry-container fade-in">
+          <div class="sorry-emoji">😢💔🥺</div>
+          <h2 class="serif-text sorry-title">I'm Sorry di, Poorni...</h2>
+          <div class="sorry-letter">
+            <p>
+              Poorni, I know I've hurt you so many times — more than I can count,
+              and more than you ever deserved. You have the most beautiful, sensitive
+              heart, and instead of protecting it, I was the one who made it ache.
+              Every tear you shed because of me breaks something inside me that I
+              can never fully put back together. 😞
+            </p>
+            <p>
+              I'm deeply sorry for every harsh word, every moment of carelessness,
+              every time I made you cry or feel less than the incredible person you
+              are. You didn't deserve any of it. You gave me nothing but love, and
+              I gave you reasons to be sad. That's something I'll always regret. 💔
+            </p>
+            <p>
+              I know sorry can't undo the pain, and I know your tender heart
+              remembers every wound. But I want you to know — I see it now. I see
+              how much I've hurt you, and it tears me apart. You are the most
+              precious person in my life, and I promise to spend every day trying
+              to be the reason you smile, not the reason you cry. 🥺
+            </p>
+            <p class="sorry-signature">
+              From the bottom of my heart — I'm sorry for everything. 😢❤️
+              <br /><span class="sorry-name">— Your Surya</span>
+            </p>
+          </div>
+          <button class="heart-btn sorry-btn" id="play-sad-music">
+            <span class="heart-icon">🎵</span>
+            Feel My Words
+          </button>
+        </div>
+        <audio id="sad-music" loop>
+          <source
+            src="https://cdn.pixabay.com/audio/2022/02/23/audio_ea70ad08e0.mp3"
+            type="audio/mpeg"
+          />
+        </audio>
+      </section>
+
+      <!-- Hidden Message Section -->
+      <section class="reveal-section full-screen" id="secret">
+        <div class="reveal-box-container">
+          <h2 class="serif-text">A Secret Message 💌</h2>
+          <div class="reveal-box" id="secret-message">
+            <div class="reveal-overlay">
+              <span>💝</span>
+              Tap to Reveal My Heart
+            </div>
+            <div class="reveal-content">
+              <div class="love-letter">
+                <p class="letter-greeting">My Dearest Azhagi ❤️,</p>
+
+                <p>
+                  I don't even know where to begin — because loving you is something
+                  that has no beginning and no end. It just exists, like the air I
+                  breathe, like the heartbeat I can't control. You are everything to
+                  me, and I want you to know every single feeling I've kept inside. 💕
+                </p>
+
+                <p class="memory-highlight">
+                  🎁 <strong>June 6th</strong> — That was the day my world changed.
+                  My birthday isn't until June 18th, but you couldn't wait. You
+                  surprised me 12 days early with a boAt Immortal 131 Bluetooth
+                  headphone. But honestly, the real gift wasn't the headphone — it was
+                  realizing that someone in this world thinks about me that much. That
+                  someone is you. That moment, I knew you were special. 🎧
+                </p>
+
+                <p class="memory-highlight">
+                  🚌 <strong>July 25th, Sivakasi</strong> — I came to meet you, and
+                  something shifted between us that day. We both felt it. It wasn't
+                  just friendship anymore — it was love. Being close to you that day,
+                  I felt like I had found my home. Not a place, but a person. You. 💗
+                </p>
+
+                <p>
+                  And then there were those beautiful mornings — not every day, but
+                  some days — when I'd see you on the bus. My heart would race the
+                  moment I spotted you. Those bus rides became my favorite journeys,
+                  not because of where they took me, but because you were there. 🚌💫
+                </p>
+
+                <p>
+                  You know what I treasure the most? Every bus ticket you handed to me.
+                  Most people would throw them away, but I saved every single one. They
+                  sit in my memories box — tiny pieces of paper that hold the biggest
+                  moments of my life. And that one earpiece jimmiki you gave me? I kept
+                  that too. These aren't just things, Poorni — they're proof that we
+                  happened, that this love is real. 🎟️📦
+                </p>
+
+                <p>
+                  Sometimes I'd come to your college just for one glimpse of you.
+                  Standing at the gates, waiting, watching — and the second you walked
+                  out, the entire world lit up. You are the only person I've ever
+                  opened my heart to. Every feeling, every fear, every dream — I've
+                  shared it all with you and only you. You're my safe place. 🏫💝
+                </p>
+
+                <p class="memory-highlight">
+                  👗 <strong>January 6th</strong> — I had always wanted to see you in a
+                  saree. I waited and waited, but never got the chance. And then that
+                  day came. When I saw you in that saree, I forgot how to breathe. You
+                  were more than gorgeous — you were a dream standing in front of me.
+                  So much cuteness on your face, avlo Azhagu! 😍 My Illavarasi, my
+                  Teddy, my Meli, my Selfie queen — you looked like a painting that
+                  God made with extra love. 🥰
+                </p>
+
+                <p class="memory-highlight">
+                  💍 <strong>January 6th — The Ring</strong> — And then your friend
+                  gave us that ring box. We looked at each other, smiled, and slipped
+                  those rings on each other's fingers. In that moment, without grand
+                  gestures or fancy words, we said it all — <em>"I love you."</em>
+                  That ring isn't just jewellery, it's a promise. A promise that I'm
+                  yours, and you're mine. Forever. 💍❤️
+                </p>
+
+                <p>
+                  Poorni, you are my Azhagi, my Selfie, my Teddy, my Illavarasi, my
+                  Meli — you are every beautiful name in this world because you
+                  deserve them all. You're not just the girl I love — you're the girl
+                  who taught me what love means. 🧸✨
+                </p>
+
+                <p class="letter-closing">
+                  I love you more than yesterday, less than tomorrow, and with
+                  everything I have today. You are my first thought in the morning,
+                  my last thought at night, and every thought in between. Happy
+                  Valentine's Day, my love. This heart beats only for you. 💓
+                </p>
+
+                <p class="letter-sign">
+                  Forever and always yours,<br />
+                  <span class="letter-name">— Your Surya 💘</span>
+                </p>
+              </div>
+              <span class="glowing-border"></span>
+            </div>
+          </div>
+          <button class="heart-btn secondary">
+            <span class="heart-icon">❤</span>
+            Forever Yours, Poorni
+          </button>
+        </div>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
